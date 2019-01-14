@@ -19,7 +19,8 @@ xhr.onload = function () {
         images = myObj;
         for (x in images) {
             var urlForImg = images[x].thumbnailUrl;
-            imgContainer += "<span><img onclick='openModal(this.src)' class='sliderImg' src="+ urlForImg +"></span>";
+            var imgId = images[x].id;
+            imgContainer += "<span><img onclick='openModal(this.src , this.id)' class='sliderImg' src="+ urlForImg +" id="+ imgId +"></span>";
         }
         document.getElementById("slideshow").innerHTML = imgContainer;
 
@@ -38,6 +39,9 @@ xhr.send();
 var lastImages = images.length -1;
 
 //Go to next img
+var arrowRight = document.querySelector('.next');
+arrowRight.addEventListener('click' , nextImg);
+
 function nextImg() {
     if (i < images.length -1){
         i++;
@@ -48,6 +52,9 @@ function nextImg() {
 }
 
 //Go to previous img
+var arrowLeft = document.querySelector('.prev');
+arrowLeft.addEventListener('click' , prevImg);
+
 function prevImg() {
     if(i = i){
         i--;
@@ -62,12 +69,16 @@ function prevImg() {
 var modal = document.getElementById('myModal');
 var imgModal = document.getElementById('mySlidesModal');
 
-function openModal(src) {
+function openModal(src , id) {
     modal.style.display = 'block';
     imgModal.src = src;
+    i = id;
 }
 
 //Close modal
+var closeBtn = document.querySelector('.close');
+closeBtn.addEventListener('click' , closeModal);
+
 function closeModal() {
     modal.style.display = "none";
 }
@@ -78,13 +89,11 @@ deltaX = null;
 
 document.getElementById('myModal').addEventListener('touchstart' , function (e) {
     var touch = false;
-    console.log(touch , 'touch izvan uslova');
     var touchMoveFn = function (e) {
         if (!touch) {
             deltaX = e.targetTouches[0].pageX - startX;
             if (Math.abs(deltaX)>=140){
                 touch = true;
-                console.log(touch , 'touch unutar uslova');
 
                 if(deltaX > 0){
                     nextImg();
