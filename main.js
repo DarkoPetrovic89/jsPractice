@@ -1,9 +1,6 @@
 /**
  * Created by user on 1/14/2019.
  */
-/**
- * Created by user on 12/12/2018.
- */
 
 var xhr = new XMLHttpRequest();
 
