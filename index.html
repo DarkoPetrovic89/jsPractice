@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Slideshow</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="slideshow">
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div class="slider-content">
+        <img id="mySlidesModal" name="mySlidesModal" style="width:100%;max-width:300px">
+    </div>
+    <!-- Next and previous buttons -->
+    <a class="prev" name="prev" onclick="prevImg()">&#10094;</a>
+    <a class="next" name="next" onclick="nextImg()">&#10095;</a>
+</div>
+<script src="main.js"></script>
+
+</body>
+</html>
